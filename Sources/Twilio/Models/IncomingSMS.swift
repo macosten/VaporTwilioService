@@ -6,7 +6,7 @@ public struct IncomingSMS: Content {
     public let smsMessageId: String
     public let numMedia: Int
     public let toCity: String?
-    public let fromZip: Int?
+    public let fromZip: String?
     public let smsId: String
     public let fromState: String?
     public let smsStatus: String // Make this an enum
@@ -27,7 +27,7 @@ public struct IncomingSMS: Content {
         smsMessageId: String,
         numMedia: Int,
         toCity: String?,
-        fromZip: Int?,
+        fromZip: String?,
         smsId: String,
         fromState: String?,
         smsStatus: String,
