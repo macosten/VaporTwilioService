@@ -1,20 +1,20 @@
 import Vapor
 
 public struct IncomingSMS: Content {
-    public let toCountry: String
-    public let toState: String
+    public let toCountry: String?
+    public let toState: String?
     public let smsMessageId: String
     public let numMedia: Int
-    public let toCity: String
-    public let fromZip: Int
+    public let toCity: String?
+    public let fromZip: Int?
     public let smsId: String
-    public let fromState: String
+    public let fromState: String?
     public let smsStatus: String // Make this an enum
-    public let fromCity: String
+    public let fromCity: String?
     public let body: String
-    public let fromCountry: String
+    public let fromCountry: String?
     public let to: String
-    public let toZip: String
+    public let toZip: String?
     public let numSegments: Int
     public let messageId: String
     public let accountId: String
@@ -22,20 +22,20 @@ public struct IncomingSMS: Content {
     public let apiVersion: String // Make this a Date
 
     public init(
-        toCountry: String,
-        toState: String,
+        toCountry: String?,
+        toState: String?,
         smsMessageId: String,
         numMedia: Int,
-        toCity: String,
-        fromZip: Int,
+        toCity: String?,
+        fromZip: Int?,
         smsId: String,
-        fromState: String,
+        fromState: String?,
         smsStatus: String,
-        fromCity: String,
+        fromCity: String?,
         body: String,
-        fromCountry: String,
+        fromCountry: String?,
         to: String,
-        toZip: String,
+        toZip: String?,
         numSegments: Int,
         messageId: String,
         accountId: String,
