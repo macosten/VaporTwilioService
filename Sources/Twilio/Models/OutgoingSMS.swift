@@ -1,6 +1,6 @@
 import Vapor
 
-public struct OutgoingSMS: Content {
+public struct OutgoingSMS: OutgoingMessage {
     let body: String
     let from: String
     let to: String

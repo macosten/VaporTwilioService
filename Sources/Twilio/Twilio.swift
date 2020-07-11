@@ -35,10 +35,10 @@ extension Twilio {
     /// Send sms
     ///
     /// - Parameters:
-    ///   - content: outgoing sms
+    ///   - content: An outgoing SMS or MMS
     ///   - container: Container
     /// - Returns: Future<Response>
-    public func send(_ sms: OutgoingSMS) -> EventLoopFuture<ClientResponse> {
+    public func send<T: OutgoingMessage>(_ sms: T) -> EventLoopFuture<ClientResponse> {
         guard let configuration = self.configuration else {
             fatalError("Twilio not configured. Use app.twilio.configuration = ...")
         }
