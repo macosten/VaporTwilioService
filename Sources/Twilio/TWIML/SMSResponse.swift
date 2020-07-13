@@ -1,3 +1,5 @@
+import Foundation
+
 public protocol TwimlGenerator {
     func generateTwiml() -> String
 }
@@ -13,13 +15,35 @@ public struct Message: Verb {
 
     public func generateTwiml() -> String {
         return """
-        <Message>
-            <Body>
-                \(body.xmlEscaped)
-            </Body>
-        </Message>
+        <Body>
+            \(body.xmlEscaped)
+        </Body>
         """
     }
+}
+
+public struct MediaMessage: Verb {
+    let url: URL
+    
+    public init(url: URL) {
+        self.url = url
+    }
+    
+    public init?(urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+        self.url = url
+    }
+    
+    public func generateTwiml() -> String {
+        return """
+        <Media>
+            \(url.absoluteString.xmlEscaped)
+        </Media>
+        """
+    }
+    
 }
 
 public struct SMSResponse: TwimlGenerator {
@@ -37,7 +61,9 @@ public struct SMSResponse: TwimlGenerator {
         return """
         <?xml version="1.0" encoding="UTF-8" ?>
         <Response>
-            \(verbs.map { $0.generateTwiml() }.joined(separator: "\n"))
+            <Message>
+                \(verbs.map { $0.generateTwiml() }.joined(separator: "\n"))
+            </Message>
         </Response>
         """
     }
